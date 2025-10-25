@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Promoção Máxima da Gê 💕🏠 | Entrar no Grupo</title>
 
-  <!-- Meta Pixel (mantido, sem alterações) -->
+  <!-- Meta Pixel (mantido) -->
   <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -24,7 +24,6 @@
 
   <style>
     :root{
-      /* cores originais (sem mudanças) */
       --pink:#ffc9c9;
       --pink-dark:#ff9191;
       --amber:#793032;          /* barra de vagas sólida */
@@ -99,16 +98,14 @@
       display:inline-flex;align-items:center;justify-content:center;gap:12px;
       width:100%;padding:16px 32px;border-radius:999px;
       font-weight:900;font-size:18px;letter-spacing:.2px;
-      background:linear-gradient(180deg,var(--pink),var(--pink-dark));
+      /* >>> GRADIENTE DO BOTÃO PRINCIPAL (NOVO) <<< */
+      background:linear-gradient(180deg,#793032,#ffa2a2);
       color:#fff;border:none;cursor:pointer;
       box-shadow:0 10px 25px rgba(255,145,145,.35);
       animation:pulse 1.6s ease-in-out infinite;
       position:relative;overflow:hidden;
       transition: transform .06s ease, box-shadow .06s ease;
     }
-    /* variante B (borda fina) */
-    .cta-btn.variant-b{ border:2px solid var(--text-main); }
-
     .cta-btn.attn-halo::before{
       content:"";position:absolute;inset:-4px;border-radius:999px;
       border:2px solid rgba(121,48,50,.25);filter:blur(2px);
@@ -140,30 +137,57 @@
     @keyframes arrowInLeft{0%,60%,100%{transform:translateX(0);opacity:1;}70%{transform:translateX(4px);opacity:.95;}}
     @keyframes arrowInRight{0%,60%,100%{transform:translateX(0);opacity:1;}70%{transform:translateX(-4px);opacity:.95;}}
 
-    /* Feed (mantido) */
+    /* Feed */
     .feed{
-      margin:18px auto 12px;max-width:500px;background:#f0f0f0;
-      border:1px solid #ccc;border-radius:16px;padding:12px;
+      margin:18px auto 12px;
+      max-width:500px;background:#f0f0f0;
+      border:1px solid #ccc;border-radius:16px;
+      padding:12px;
     }
     .notif{display:flex;align-items:center;gap:10px;background:#fff;padding:10px;border-radius:12px;margin-bottom:10px;border:1px solid #eee;font-size:14px;font-weight:600;opacity:0;transform:translateY(-20px);animation:slideDown .4s ease forwards;}
     .notif .badge{background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.3);color:#1e8e3e;font-weight:800;font-size:13px;padding:6px 8px;border-radius:999px;}
     @keyframes slideDown{to{opacity:1;transform:translateY(0);}}
 
-    /* Vantagens (mantidas) */
+    /* Vantagens */
     .benefits{max-width:700px;margin:8px auto;padding:0 15px;}
-    .benefit{display:flex;align-items:center;gap:14px;background:rgba(255,201,201,0.2);border-radius:16px;padding:14px 16px;margin-bottom:14px;border:1px solid var(--pink-dark);box-shadow:0 4px 10px rgba(0,0,0,0.05);color:var(--text-main);}
-    .emojibox{width:46px;height:46px;min-width:46px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--pink),var(--pink-dark));border-radius:12px;font-size:22px;}
+    .benefit{
+      display:flex;align-items:center;gap:14px;
+      background:rgba(255,201,201,0.2);
+      border-radius:16px;
+      padding:14px 16px;margin-bottom:14px;
+      border:1px solid var(--pink-dark);
+      box-shadow:0 4px 10px rgba(0,0,0,0.05);
+      color:var(--text-main);
+    }
+    .emojibox{
+      width:46px;height:46px;min-width:46px;
+      display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(180deg,var(--pink),var(--pink-dark));
+      border-radius:12px;
+      font-size:22px;
+    }
     .benefit-text h4{font-size:17px;font-weight:800;margin-bottom:2px;}
     .benefit-text p{font-size:14px;color:var(--text-main);margin:0;}
 
-    /* Rodapé fixo (mantido) */
-    .sticky-footer{position:fixed;bottom:0;left:0;right:0;background:var(--footer-bg);color:var(--white);padding:12px 16px;box-shadow:0 -8px 20px rgba(0,0,0,.2);display:flex;align-items:center;justify-content:space-between;z-index:50;}
+    /* Rodapé fixo */
+    .sticky-footer{
+      position:fixed;bottom:0;left:0;right:0;
+      background:var(--footer-bg);
+      color:var(--white);
+      padding:12px 16px;
+      box-shadow:0 -8px 20px rgba(0,0,0,.2);
+      display:flex;align-items:center;justify-content:space-between;
+      z-index:+50;
+    }
     .sticky-footer div{font-weight:700;}
     .sticky-btn{
       background:linear-gradient(180deg,var(--pink),var(--pink-dark));
       color:var(--text-main);border:none;border-radius:999px;
-      padding:14px 26px;font-weight:800;font-size:15px;cursor:pointer;
-      box-shadow:0 6px 16px rgba(255,145,145,.35);margin-left:10px;
+      padding:14px 26px;
+      font-weight:800;font-size:15px;
+      cursor:pointer;
+      box-shadow:0 6px 16px rgba(255,145,145,.35);
+      margin-left:10px;
     }
   </style>
 </head>
@@ -187,7 +211,7 @@
       <span class="live-dot"></span> +7.500 membros ativos · 🎯 1 clique · 🚫 Sem spam
     </div>
 
-    <!-- Botão principal com setas modernas (A/B) -->
+    <!-- Botão principal com setas modernas -->
     <div class="cta-wrap">
       <button id="ctaMain" class="cta-btn attn-halo">
         <!-- seta moderna (direita) apontando para o centro -->
@@ -195,7 +219,7 @@
           <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M8 4 L16 12 L8 20" /></svg>
         </span>
 
-        <span id="ctaLabel">ENTRAR NO GRUPO AGORA</span>
+        <span id="ctaLabel">ENTRAR GRÁTIS NO GRUPO</span>
 
         <!-- seta moderna (esquerda) apontando para o centro -->
         <span class="cta-icon right" aria-hidden="true">
@@ -250,22 +274,6 @@
     const vacancyText=document.getElementById('vacancyText');
     const fillBar=document.getElementById('fillBar');
 
-    // --- A/B TESTE: define variante do CTA (persistente por visitante)
-    (function abAssign(){
-      try{
-        let v = localStorage.getItem('cta_variant'); // 'A' ou 'B'
-        if(!v){ v = Math.random() < 0.5 ? 'A' : 'B'; localStorage.setItem('cta_variant', v); }
-        const btn = document.getElementById('ctaMain');
-        const label = document.getElementById('ctaLabel');
-        if(v === 'B'){
-          // Variante B: rótulo diferente + borda fina no tema
-          label.textContent = 'ENTRAR GRÁTIS NO GRUPO';
-          btn.classList.add('variant-b');
-        }
-      }catch(e){}
-    })();
-
-    // --- Lógica da barra de vagas (mantida)
     let currentVacancies = parseInt(localStorage.getItem("currentVacancies")) || START_VACANCIES;
     function normalizeDateStr(d){return new Date(d.getFullYear(), d.getMonth(), d.getDate()).toDateString();}
     const todayStr = normalizeDateStr(new Date());
@@ -305,16 +313,6 @@
         const nextMs=[1000,2000,3000][Math.floor(Math.random()*3)];
         setTimeout(step,nextMs);
       }
-    }
-
-    // (feed visual mantido mas não é essencial ao funil)
-    function pushNotification(name){
-      const row=document.createElement('div');
-      row.className='notif';
-      row.innerHTML=`<div class="badge">✅</div><div><strong>${name}</strong> entrou no grupo</div>`;
-      if(feedEl.firstChild){ feedEl.insertBefore(row,feedEl.firstChild); }
-      else{ feedEl.appendChild(row); }
-      if(feedEl.children.length>3){ feedEl.removeChild(feedEl.lastChild); }
     }
 
     function handleClick(){
