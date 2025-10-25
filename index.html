@@ -71,7 +71,6 @@
       position:absolute;inset:0 100% 0 0;background:var(--amber);
       border-radius:999px;transition:inset .5s ease;
     }
-    /* flash sutil quando a barra avança */
     .bar>.fill.flash{box-shadow:0 0 0 0 rgba(121,48,50,.35),0 0 12px rgba(121,48,50,.6);animation:flashOut .55s ease-out forwards;}
     @keyframes flashOut{to{box-shadow:none;}}
 
@@ -99,16 +98,16 @@
       width:100%;padding:16px 32px;border-radius:999px;
       font-weight:900;font-size:18px;letter-spacing:.2px;
       /* >>> GRADIENTE DO BOTÃO PRINCIPAL (NOVO) <<< */
-      background:linear-gradient(180deg,#793032,#ffa2a2);
+      background:linear-gradient(180deg,#ff7f7f,#9d2e31);
       color:#fff;border:none;cursor:pointer;
-      box-shadow:0 10px 25px rgba(255,145,145,.35);
+      box-shadow:0 10px 25px rgba(157,46,49,.35);
       animation:pulse 1.6s ease-in-out infinite;
       position:relative;overflow:hidden;
       transition: transform .06s ease, box-shadow .06s ease;
     }
     .cta-btn.attn-halo::before{
       content:"";position:absolute;inset:-4px;border-radius:999px;
-      border:2px solid rgba(121,48,50,.25);filter:blur(2px);
+      border:2px solid rgba(157,46,49,.28);filter:blur(2px);
       opacity:0;pointer-events:none;animation:haloPop 7s ease-in-out infinite;
     }
     @keyframes haloPop{
@@ -177,7 +176,7 @@
       padding:12px 16px;
       box-shadow:0 -8px 20px rgba(0,0,0,.2);
       display:flex;align-items:center;justify-content:space-between;
-      z-index:+50;
+      z-index:50;
     }
     .sticky-footer div{font-weight:700;}
     .sticky-btn{
@@ -214,14 +213,10 @@
     <!-- Botão principal com setas modernas -->
     <div class="cta-wrap">
       <button id="ctaMain" class="cta-btn attn-halo">
-        <!-- seta moderna (direita) apontando para o centro -->
         <span class="cta-icon left" aria-hidden="true">
           <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M8 4 L16 12 L8 20" /></svg>
         </span>
-
         <span id="ctaLabel">ENTRAR GRÁTIS NO GRUPO</span>
-
-        <!-- seta moderna (esquerda) apontando para o centro -->
         <span class="cta-icon right" aria-hidden="true">
           <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M16 4 L8 12 L16 20" /></svg>
         </span>
@@ -301,7 +296,6 @@
       const filled=(START_VACANCIES-currentVacancies)/(START_VACANCIES-MIN_VACANCIES);
       const pct=Math.max(0,Math.min(1,filled));
       fillBar.style.inset=`0 ${(1-pct)*100}% 0 0`;
-      // flash na barra ao atualizar
       fillBar.classList.remove('flash'); void fillBar.offsetWidth; fillBar.classList.add('flash');
     }
     function step(){
