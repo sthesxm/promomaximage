@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Promoção Máxima da Gê 💕🏠 | Entrar no Grupo</title>
 
-  <!-- Meta Pixel -->
+  <!-- Meta Pixel (mantido, sem alterações) -->
   <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -17,19 +17,17 @@
   'https://connect.facebook.net/en_US/fbevents.js');
 
   fbq('init', '3294037404094620');
-
-  // 🚫 Bloqueia eventos automáticos (como Subscribe)
   fbq('set', 'autoConfig', false, '3294037404094620');
-
   fbq('track', 'PageView');
   </script>
   <!-- End Meta Pixel -->
 
   <style>
     :root{
+      /* cores originais (sem mudanças) */
       --pink:#ffc9c9;
       --pink-dark:#ff9191;
-      --amber:#793032;
+      --amber:#793032;          /* barra de vagas sólida */
       --text-main:#793032;
       --gray:#555;
       --muted:#777;
@@ -55,142 +53,117 @@
       box-shadow:var(--shadow);
     }
     .logo-wrap{
-      width:120px;
-      height:120px;
-      margin:0 auto 12px;
-      border-radius:50%;
-      background:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 8px 20px rgba(0,0,0,.2);
-      overflow:hidden;
+      width:120px;height:120px;
+      margin:0 auto 12px;border-radius:50%;
+      background:#fff;display:flex;align-items:center;justify-content:center;
+      box-shadow:0 8px 20px rgba(0,0,0,.2);overflow:hidden;
     }
-    .logo-wrap img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center;
-      border-radius:50%;
-    }
+    .logo-wrap img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
     h1{font-size:28px;font-weight:800;margin-bottom:6px;}
-    .subtitle{
-      font-size:15px;
-      color:var(--text-main);
-      margin-bottom:10px;
-    }
+    .subtitle{font-size:15px;color:var(--text-main);margin-bottom:10px;}
 
-    .vacancy-wrap{
-      max-width:600px;
-      margin:6px auto 12px;
-      text-align:center;
-    }
-    .vacancy-top{
-      font-weight:800;
-      font-size:17px;
-      margin-bottom:6px;
-    }
-    .bar{
-      width:100%;height:16px;background:#f1f1f1;
-      border:2px solid #ddd;border-radius:999px;
-      position:relative;overflow:hidden;
-    }
+    .cta-section{text-align:center;margin:10px auto 0;padding:15px;max-width:700px;}
+
+    /* Barra de vagas */
+    .vacancy-wrap{max-width:600px;margin:6px auto 12px;text-align:center;}
+    .vacancy-top{font-weight:800;font-size:17px;margin-bottom:6px;}
+    .bar{width:100%;height:16px;background:#f1f1f1;border:2px solid #ddd;border-radius:999px;position:relative;overflow:hidden;}
     .bar>.fill{
-      position:absolute;inset:0 100% 0 0;
-      background:var(--amber);
-      border-radius:999px;
-      transition:inset .5s ease;
+      position:absolute;inset:0 100% 0 0;background:var(--amber);
+      border-radius:999px;transition:inset .5s ease;
+    }
+    /* flash sutil quando a barra avança */
+    .bar>.fill.flash{box-shadow:0 0 0 0 rgba(121,48,50,.35),0 0 12px rgba(121,48,50,.6);animation:flashOut .55s ease-out forwards;}
+    @keyframes flashOut{to{box-shadow:none;}}
+
+    /* Prova social compacta */
+    .micro-trust{
+      font-size:13.5px;font-weight:700;color:#666;margin:10px 0;
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+      display:flex;align-items:center;justify-content:center;gap:6px;
+    }
+    .live-dot{
+      width:8px;height:8px;border-radius:50%;
+      background:#1fbf75;box-shadow:0 0 0 0 rgba(31,191,117,.55);
+      animation:dotPulse 1.8s ease-out infinite;
+    }
+    @keyframes dotPulse{
+      0%{box-shadow:0 0 0 0 rgba(31,191,117,.55);}
+      70%{box-shadow:0 0 0 10px rgba(31,191,117,0);}
+      100%{box-shadow:0 0 0 0 rgba(31,191,117,0);}
     }
 
-    .cta-section{
-      text-align:center;
-      margin:10px auto 0;
-      padding:15px;
-      max-width:700px;
-    }
+    /* CTA principal com halo + brilho + setas modernas (SVG) */
+    .cta-wrap{position:relative;display:inline-block;width:100%;}
     .cta-btn{
-      display:inline-block;padding:16px 32px;
-      width:100%;
-      border-radius:999px;font-weight:800;font-size:18px;
+      display:inline-flex;align-items:center;justify-content:center;gap:12px;
+      width:100%;padding:16px 32px;border-radius:999px;
+      font-weight:900;font-size:18px;letter-spacing:.2px;
       background:linear-gradient(180deg,var(--pink),var(--pink-dark));
-      color:var(--text-main);
-      border:none;cursor:pointer;
-      animation:pulse 1.6s ease-in-out infinite;
+      color:#fff;border:none;cursor:pointer;
       box-shadow:0 10px 25px rgba(255,145,145,.35);
+      animation:pulse 1.6s ease-in-out infinite;
+      position:relative;overflow:hidden;
+      transition: transform .06s ease, box-shadow .06s ease;
     }
-    @keyframes pulse{
-      0%,100%{transform:scale(1);}
-      50%{transform:scale(1.06);}
-    }
+    /* variante B (borda fina) */
+    .cta-btn.variant-b{ border:2px solid var(--text-main); }
 
+    .cta-btn.attn-halo::before{
+      content:"";position:absolute;inset:-4px;border-radius:999px;
+      border:2px solid rgba(121,48,50,.25);filter:blur(2px);
+      opacity:0;pointer-events:none;animation:haloPop 7s ease-in-out infinite;
+    }
+    @keyframes haloPop{
+      0%,92%{opacity:0;transform:scale(1)}
+      94%{opacity:1;transform:scale(1.03)}
+      100%{opacity:0;transform:scale(1.08)}
+    }
+    .cta-btn::after{
+      content:"";position:absolute;top:0;bottom:0;left:-20%;
+      width:20%;background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.45) 50%,transparent 100%);
+      transform:skewX(-20deg);animation:shine 3.5s ease-in-out infinite;
+    }
+    @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+    @keyframes shine{0%,60%{left:-25%}70%{left:110%}100%{left:110%}}
+    .cta-btn:active{transform:translateY(1px) scale(.99);box-shadow:0 6px 16px rgba(0,0,0,.25);}
+
+    /* Setas modernas (SVG “gordinhas”) animadas para dentro */
+    .cta-icon{
+      width:26px;height:26px;flex:0 0 26px;display:inline-flex;align-items:center;justify-content:center;
+      filter: drop-shadow(0 0 6px rgba(255,255,255,.35));
+    }
+    .cta-icon svg{width:100%;height:100%;}
+    .cta-icon path{stroke:#fff;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round;fill:none;}
+    .cta-icon.left{animation:arrowInLeft 1.5s ease-in-out infinite;}
+    .cta-icon.right{animation:arrowInRight 1.5s ease-in-out infinite;}
+    @keyframes arrowInLeft{0%,60%,100%{transform:translateX(0);opacity:1;}70%{transform:translateX(4px);opacity:.95;}}
+    @keyframes arrowInRight{0%,60%,100%{transform:translateX(0);opacity:1;}70%{transform:translateX(-4px);opacity:.95;}}
+
+    /* Feed (mantido) */
     .feed{
-      margin:18px auto 12px;
-      max-width:500px;
-      background:#f0f0f0;
-      border:1px solid #ccc;
-      border-radius:16px;
-      padding:12px;
+      margin:18px auto 12px;max-width:500px;background:#f0f0f0;
+      border:1px solid #ccc;border-radius:16px;padding:12px;
     }
-    .notif{
-      display:flex;align-items:center;gap:10px;
-      background:#fff;padding:10px;border-radius:12px;
-      margin-bottom:10px;border:1px solid #eee;
-      font-size:14px;font-weight:600;
-      opacity:0;transform:translateY(-20px);
-      animation:slideDown .4s ease forwards;
-    }
-    .notif .badge{
-      background:rgba(46,204,113,.15);
-      border:1px solid rgba(46,204,113,.3);
-      color:#1e8e3e;font-weight:800;font-size:13px;
-      padding:6px 8px;border-radius:999px;
-    }
-    @keyframes slideDown{
-      to{opacity:1;transform:translateY(0);}
-    }
+    .notif{display:flex;align-items:center;gap:10px;background:#fff;padding:10px;border-radius:12px;margin-bottom:10px;border:1px solid #eee;font-size:14px;font-weight:600;opacity:0;transform:translateY(-20px);animation:slideDown .4s ease forwards;}
+    .notif .badge{background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.3);color:#1e8e3e;font-weight:800;font-size:13px;padding:6px 8px;border-radius:999px;}
+    @keyframes slideDown{to{opacity:1;transform:translateY(0);}}
 
+    /* Vantagens (mantidas) */
     .benefits{max-width:700px;margin:8px auto;padding:0 15px;}
-    .benefit{
-      display:flex;align-items:center;gap:14px;
-      background:rgba(255,201,201,0.2);
-      border-radius:16px;
-      padding:14px 16px;margin-bottom:14px;
-      border:1px solid var(--pink-dark);
-      box-shadow:0 4px 10px rgba(0,0,0,0.05);
-      color:var(--text-main);
-    }
-    .emojibox{
-      width:46px;height:46px;min-width:46px;
-      display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(180deg,var(--pink),var(--pink-dark));
-      border-radius:12px;
-      font-size:22px;
-    }
-    .benefit-text h4{
-      font-size:17px;font-weight:800;margin-bottom:2px;
-    }
-    .benefit-text p{
-      font-size:14px;color:var(--text-main);margin:0;
-    }
+    .benefit{display:flex;align-items:center;gap:14px;background:rgba(255,201,201,0.2);border-radius:16px;padding:14px 16px;margin-bottom:14px;border:1px solid var(--pink-dark);box-shadow:0 4px 10px rgba(0,0,0,0.05);color:var(--text-main);}
+    .emojibox{width:46px;height:46px;min-width:46px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--pink),var(--pink-dark));border-radius:12px;font-size:22px;}
+    .benefit-text h4{font-size:17px;font-weight:800;margin-bottom:2px;}
+    .benefit-text p{font-size:14px;color:var(--text-main);margin:0;}
 
-    .sticky-footer{
-      position:fixed;bottom:0;left:0;right:0;
-      background:var(--footer-bg);
-      color:var(--white);
-      padding:12px 16px;
-      box-shadow:0 -8px 20px rgba(0,0,0,.2);
-      display:flex;align-items:center;justify-content:space-between;
-      z-index:50;
-    }
+    /* Rodapé fixo (mantido) */
+    .sticky-footer{position:fixed;bottom:0;left:0;right:0;background:var(--footer-bg);color:var(--white);padding:12px 16px;box-shadow:0 -8px 20px rgba(0,0,0,.2);display:flex;align-items:center;justify-content:space-between;z-index:50;}
     .sticky-footer div{font-weight:700;}
     .sticky-btn{
       background:linear-gradient(180deg,var(--pink),var(--pink-dark));
       color:var(--text-main);border:none;border-radius:999px;
-      padding:14px 26px;
-      font-weight:800;font-size:15px;
-      cursor:pointer;
-      box-shadow:0 6px 16px rgba(255,145,145,.35);
-      margin-left:10px;
+      padding:14px 26px;font-weight:800;font-size:15px;cursor:pointer;
+      box-shadow:0 6px 16px rgba(255,145,145,.35);margin-left:10px;
     }
   </style>
 </head>
@@ -208,7 +181,29 @@
       <div class="vacancy-top"><span id="vacancyText">Últimas vagas de hoje • Restam 24 👇</span></div>
       <div class="bar"><div class="fill" id="fillBar"></div></div>
     </div>
-    <button id="ctaMain" class="cta-btn">ENTRAR NO GRUPO AGORA</button>
+
+    <!-- Prova social leve -->
+    <div class="micro-trust">
+      <span class="live-dot"></span> +7.500 membros ativos · 🎯 1 clique · 🚫 Sem spam
+    </div>
+
+    <!-- Botão principal com setas modernas (A/B) -->
+    <div class="cta-wrap">
+      <button id="ctaMain" class="cta-btn attn-halo">
+        <!-- seta moderna (direita) apontando para o centro -->
+        <span class="cta-icon left" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M8 4 L16 12 L8 20" /></svg>
+        </span>
+
+        <span id="ctaLabel">ENTRAR NO GRUPO AGORA</span>
+
+        <!-- seta moderna (esquerda) apontando para o centro -->
+        <span class="cta-icon right" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M16 4 L8 12 L16 20" /></svg>
+        </span>
+      </button>
+    </div>
+
     <div class="feed" id="feed"></div>
   </section>
 
@@ -255,19 +250,22 @@
     const vacancyText=document.getElementById('vacancyText');
     const fillBar=document.getElementById('fillBar');
 
-    const NAMES_POOL=[
-      "Francisca Lacerda","Rosália Maria","Maria Júlia Souza","Ana Beatriz Nogueira","Josefa Almeida",
-      "Tereza Lemos","Joana Prado","Helena Barbosa","Cecília Andrade","Laura Pacheco","Clara Moreira",
-      "Isabel Figueira","Marta Azevedo","Aurora Fernandes","Olívia Castro","Beatriz Siqueira",
-      "Lúcia Nunes","Ester Carvalho","Camila Duarte","Regina Campos","Noêmia Teixeira","Paula Rezende",
-      "Marina Peixoto","Cristina Moura","Vitória Lopes","Sueli Brito","Rita Xavier","Elisa Cardoso",
-      "Lorena Ribeiro","Graça Monteiro","Helena Antunes","Patrícia Rocha","Juliana Costa","Madalena Correia",
-      "Adélia Vieira","Celina Pinto","Renata Tavares","Gabriela Melo","Sônia Gonçalves","Daniela Farias"
-    ];
+    // --- A/B TESTE: define variante do CTA (persistente por visitante)
+    (function abAssign(){
+      try{
+        let v = localStorage.getItem('cta_variant'); // 'A' ou 'B'
+        if(!v){ v = Math.random() < 0.5 ? 'A' : 'B'; localStorage.setItem('cta_variant', v); }
+        const btn = document.getElementById('ctaMain');
+        const label = document.getElementById('ctaLabel');
+        if(v === 'B'){
+          // Variante B: rótulo diferente + borda fina no tema
+          label.textContent = 'ENTRAR GRÁTIS NO GRUPO';
+          btn.classList.add('variant-b');
+        }
+      }catch(e){}
+    })();
 
-    function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
-    let namesQueue=shuffle([...NAMES_POOL]);
-
+    // --- Lógica da barra de vagas (mantida)
     let currentVacancies = parseInt(localStorage.getItem("currentVacancies")) || START_VACANCIES;
     function normalizeDateStr(d){return new Date(d.getFullYear(), d.getMonth(), d.getDate()).toDateString();}
     const todayStr = normalizeDateStr(new Date());
@@ -295,12 +293,11 @@
       const filled=(START_VACANCIES-currentVacancies)/(START_VACANCIES-MIN_VACANCIES);
       const pct=Math.max(0,Math.min(1,filled));
       fillBar.style.inset=`0 ${(1-pct)*100}% 0 0`;
+      // flash na barra ao atualizar
+      fillBar.classList.remove('flash'); void fillBar.offsetWidth; fillBar.classList.add('flash');
     }
     function step(){
       if(currentVacancies<=MIN_VACANCIES) return;
-      if(namesQueue.length===0) namesQueue=shuffle([...NAMES_POOL]);
-      const name=namesQueue.shift();
-      pushNotification(name);
       currentVacancies--;
       localStorage.setItem("currentVacancies", currentVacancies);
       updateVacancyUI();
@@ -309,6 +306,8 @@
         setTimeout(step,nextMs);
       }
     }
+
+    // (feed visual mantido mas não é essencial ao funil)
     function pushNotification(name){
       const row=document.createElement('div');
       row.className='notif';
@@ -319,6 +318,7 @@
     }
 
     function handleClick(){
+      if('vibrate' in navigator) navigator.vibrate(15);
       try{ fbq('track','Lead'); }catch(e){}
       setTimeout(()=>{ window.open(WHATS_LINK,'_blank'); },500);
     }
