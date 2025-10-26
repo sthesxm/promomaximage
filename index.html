@@ -16,9 +16,38 @@
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
 
-  fbq('init', '3294037404094620');
-  fbq('set', 'autoConfig', false, '3294037404094620');
-  fbq('track', 'PageView');
+  // ---- Correspondência Avançada (Manual) ----
+  // Coleta email/telefone da URL (?em=&ph=) ou do localStorage (am_em / am_ph)
+  (function(){
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var em = params.get('em') || localStorage.getItem('am_em') || "";
+      var ph = params.get('ph') || localStorage.getItem('am_ph') || "";
+
+      // Monte o objeto apenas com os campos presentes
+      var advMatch = {};
+      if (em) advMatch.em = em;   // Será hasheado automaticamente (SHA-256) pelo Pixel
+      if (ph) advMatch.ph = ph;   // Idem
+
+      // ID do seu Pixel
+      var PIXEL_ID = '3294037404094620';
+
+      // Inicia com correspondência avançada manual (terceiro parâmetro)
+      fbq('init', PIXEL_ID, advMatch);
+
+      // (Opcional) bloqueia autoConfig se você já controla eventos manualmente
+      fbq('set', 'autoConfig', false, PIXEL_ID);
+
+      // PageView padrão
+      fbq('track', 'PageView');
+    } catch (e) {
+      // Fallback se algo der errado (inicia sem correspondência avançada)
+      fbq('init', '3294037404094620');
+      fbq('set', 'autoConfig', false, '3294037404094620');
+      fbq('track', 'PageView');
+    }
+  })();
+  // ---- Fim Correspondência Avançada ----
   </script>
   <!-- End Meta Pixel -->
 
@@ -249,7 +278,7 @@
 
     function shuffle(arr){
       for(let i=arr.length-1;i>0;i--){
-        const j=Math.floor(Math.random()*(i+1));
+        const j=Math.floor(Math.random()* (i+1));
         [arr[i],arr[j]]=[arr[j],arr[i]];
       }
       return arr;
