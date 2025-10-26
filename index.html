@@ -118,6 +118,9 @@
       border:none;cursor:pointer;
       animation:pulse 1.6s ease-in-out infinite;
       box-shadow:0 10px 25px rgba(255,145,145,.35);
+      /* ===== ADIÇÕES PARA O SHINE (não alteram o gradiente) ===== */
+      position: relative;
+      overflow: hidden; /* garante o recorte do brilho */
     }
     @keyframes pulse{
       0%,100%{transform:scale(1);}
@@ -193,6 +196,60 @@
       box-shadow:0 6px 16px rgba(255,145,145,.35);
       margin-left:10px;
     }
+
+    /* ===================== CSS ADICIONAL REQUERIDO ===================== */
+
+    /* Prova social (acima do botão) */
+    .micro-trust{
+      font-size:13.5px;
+      font-weight:700;
+      color:#666;
+      margin:10px 0;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+    }
+    .live-dot{
+      width:8px; height:8px; border-radius:50%;
+      background:#1fbf75;
+      box-shadow:0 0 0 0 rgba(31,191,117,.55);
+      animation:dotPulse 1.8s ease-out infinite;
+    }
+    @keyframes dotPulse{
+      0%   { box-shadow:0 0 0 0 rgba(31,191,117,.55); }
+      70%  { box-shadow:0 0 0 10px rgba(31,191,117,0); }
+      100% { box-shadow:0 0 0 0 rgba(31,191,117,0); }
+    }
+
+    /* Flash/shine que passa no botão principal (apenas adicionar) */
+    .cta-btn::after{
+      content:"";
+      position:absolute; top:0; bottom:0; left:-25%;
+      width:22%;
+      background:linear-gradient(120deg,transparent 0%, rgba(255,255,255,.45) 50%, transparent 100%);
+      transform:skewX(-20deg);
+      animation:shine 3.5s ease-in-out infinite;
+      pointer-events:none;
+    }
+    @keyframes shine{
+      0%,60% { left:-25%; }
+      70%    { left:110%; }
+      100%   { left:110%; }
+    }
+
+    /* Linha de confiança (abaixo do botão) */
+    .trust-line{
+      font-size:12px;
+      color:#777;
+      margin-top:8px;
+      font-weight:600;
+      text-align:center;
+    }
+    /* =================== FIM DO CSS ADICIONAL REQUERIDO =================== */
   </style>
 </head>
 <body>
@@ -209,8 +266,18 @@
       <div class="vacancy-top"><span id="vacancyText">Últimas vagas de hoje • Restam 24 👇</span></div>
       <div class="bar"><div class="fill" id="fillBar"></div></div>
     </div>
+
+    <!-- Prova social condensada (acima do botão) -->
+    <div class="micro-trust">
+      <span class="live-dot"></span> +7.500 membros · 🎯 1 clique · 🚫 Sem spam
+    </div>
+
     <!-- 🔸 APENAS isto foi alterado: texto do botão principal -->
     <button id="ctaMain" class="cta-btn">ENTRAR GRÁTIS NO GRUPO</button>
+
+    <!-- Linha de confiança (abaixo do botão) -->
+    <p class="trust-line">🔒 100% seguro · Link oficial do grupo · Nenhum dado é solicitado</p>
+
     <div class="feed" id="feed"></div>
   </section>
 
@@ -267,7 +334,7 @@
       "Adélia Vieira","Celina Pinto","Renata Tavares","Gabriela Melo","Sônia Gonçalves","Daniela Farias"
     ];
 
-    function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
+    function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j]];}return arr;}
     let namesQueue=shuffle([...NAMES_POOL]);
 
     let currentVacancies = parseInt(localStorage.getItem("currentVacancies")) || START_VACANCIES;
