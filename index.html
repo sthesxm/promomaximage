@@ -35,6 +35,7 @@
       fbq('track', 'PageView');
     }
   })();
+  // ---- Fim Correspondência Avançada ----
   </script>
   <!-- End Meta Pixel -->
 
@@ -73,7 +74,6 @@
       box-shadow:0 8px 20px rgba(0,0,0,.2);overflow:hidden;
     }
     .logo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:50%;}
-
     h1{font-size:28px;font-weight:800;margin-bottom:6px;}
     .subtitle{font-size:15px;color:var(--text-main);margin-bottom:10px;}
 
@@ -84,6 +84,7 @@
 
     .cta-section{text-align:center;margin:10px auto 0;padding:15px;max-width:700px;}
 
+    /* 🟢 Prova social (acima do botão) */
     .micro-trust{
       display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#666;
       background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.06);
@@ -99,14 +100,15 @@
       100%{box-shadow:0 0 0 0 rgba(40,167,69,0);}
     }
 
-    /* ✨ Botão principal ajustado */
+    /* ✨ Botão principal com shine — AJUSTE para 1 linha no celular */
     .cta-btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      padding:16px 20px;width:100%;border-radius:999px;font-weight:800;font-size:18px;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:16px 24px;width:100%;border-radius:999px;font-weight:800;font-size:18px;
       background:linear-gradient(180deg,#ff7f7f,#9d2e31);
       color:var(--text-main);border:none;cursor:pointer;
       animation:pulse 1.6s ease-in-out infinite;box-shadow:0 10px 25px rgba(255,145,145,.35);
-      position:relative;overflow:hidden;white-space:nowrap;
+      position:relative;overflow:hidden;
+      white-space:nowrap; /* impede quebra do texto */
     }
     @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
     .cta-btn::after{
@@ -116,13 +118,67 @@
     }
     @keyframes shine{0%,60%{left:-25%;}70%{left:110%;}100%{left:110%;}}
 
-    .cta-icon{width:24px;height:24px;flex:0 0 24px;display:inline-flex;align-items:center;justify-content:center;}
+    /* ➤ Setinhas modernas */
+    .cta-icon{width:26px;height:26px;flex:0 0 26px;display:inline-flex;align-items:center;justify-content:center;filter:drop-shadow(0 0 6px rgba(255,255,255,.35));}
     .cta-icon svg{width:100%;height:100%;}
-    .cta-icon path{stroke:#fff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;fill:none;}
+    .cta-icon path{stroke:#fff;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round;fill:none;}
+    .cta-icon.left{animation:arrowInLeft 1.5s ease-in-out infinite;}
+    .cta-icon.right{animation:arrowInRight 1.5s ease-in-out infinite;}
+    @keyframes arrowInLeft{0%,60%,100%{transform:translateX(0);opacity:1;}70%{transform:translateX(4px);opacity:.95;}}
+    @keyframes arrowInRight{0%,60%,100%{transform:translateX(0);opacity:1;}70%{transform:translateX(-4px);opacity:.95;}}
 
+    /* 🔸 Texto do botão principal em branco (sem afetar setinhas) */
     #ctaMain span:not(.cta-icon){color:#fff;}
 
+    /* 🔒 Linha de confiança (abaixo do botão) */
     .trust-line{font-size:12px;color:#777;margin-top:8px;font-weight:600;text-align:center;}
+
+    /* Feed (mantido) */
+    .feed{margin:18px auto 12px;max-width:500px;background:#f0f0f0;border:1px solid #ccc;border-radius:16px;padding:12px;}
+    .notif{
+      display:flex;align-items:center;gap:10px;background:#fff;padding:10px;border-radius:12px;
+      margin-bottom:10px;border:1px solid #eee;font-size:14px;font-weight:600;
+      opacity:0;transform:translateY(-20px);animation:slideDown .4s ease forwards;
+    }
+    .notif .badge{
+      background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.3);
+      color:#1e8e3e;font-weight:800;font-size:13px;padding:6px 8px;border-radius:999px;
+    }
+    @keyframes slideDown{to{opacity:1;transform:translateY(0);}}
+
+    /* Benefícios (mantido) */
+    .benefits{max-width:700px;margin:8px auto;padding:0 15px;}
+    .benefit{
+      display:flex;align-items:center;gap:14px;background:rgba(255,201,201,0.2);
+      border-radius:16px;padding:14px 16px;margin-bottom:14px;border:1px solid var(--pink-dark);
+      box-shadow:0 4px 10px rgba(0,0,0,0.05);color:var(--text-main);
+    }
+    .emojibox{
+      width:46px;height:46px;min-width:46px;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(180deg,var(--pink),var(--pink-dark));border-radius:12px;font-size:22px;
+      color:#fff;
+    }
+    .benefit-text h4{font-size:17px;font-weight:800;margin-bottom:2px;}
+    .benefit-text p{font-size:14px;color:var(--text-main);margin:0;}
+
+    .sticky-footer{
+      position:fixed;bottom:0;left:0;right:0;background:var(--footer-bg);color:var(--white);
+      padding:12px 16px;box-shadow:0 -8px 20px rgba(0,0,0,.2);
+      display:flex;align-items:center;justify-content:space-between;z-index:50;
+    }
+    .sticky-footer div{font-weight:700;}
+    .sticky-btn{
+      background:linear-gradient(180deg,var(--pink),var(--pink-dark));
+      color:var(--text-main);border:none;border-radius:999px;padding:14px 26px;
+      font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 6px 16px rgba(255,145,145,.35);margin-left:10px;
+    }
+
+    /* Micro-ajustes só em telas bem estreitas para caber 1 linha */
+    @media (max-width: 360px){
+      .cta-btn{gap:8px;padding:14px 18px;font-size:17px;}
+      .cta-icon{width:22px;height:22px;flex:0 0 22px;}
+      .cta-icon path{stroke-width:3.6;}
+    }
   </style>
 </head>
 <body>
@@ -140,34 +196,158 @@
       <div class="bar"><div class="fill" id="fillBar"></div></div>
     </div>
 
+    <!-- 🟢 Prova Social -->
     <div class="micro-trust">
       <span class="live-dot"></span> +7.500 membros · 🎯 1 clique · 🚫 Sem spam
     </div>
 
+    <!-- ✨ Botão principal com setinhas e texto branco -->
     <button id="ctaMain" class="cta-btn">
-      <span class="cta-icon left"><svg viewBox="0 0 24 24"><path d="M8 4 L16 12 L8 20" /></svg></span>
+      <span class="cta-icon left" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false"><path d="M8 4 L16 12 L8 20" /></svg>
+      </span>
+
       <span>ENTRAR GRÁTIS NO GRUPO</span>
-      <span class="cta-icon right"><svg viewBox="0 0 24 24"><path d="M16 4 L8 12 L16 20" /></svg></span>
+
+      <span class="cta-icon right" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false"><path d="M16 4 L8 12 L16 20" /></svg>
+      </span>
     </button>
 
-    <p class="trust-line">🔒 100% seguro · Link oficial do grupo · Nenhum dado é solicitado</p>
+    <!-- 🔒 Linha de confiança -->
+    <p class="trust-line">
+      🔒 100% seguro · Link oficial do grupo · Nenhum dado é solicitado
+    </p>
+
+    <!-- FEED mantido -->
+    <div class="feed" id="feed"></div>
   </section>
+
+  <!-- BENEFÍCIOS mantidos -->
+  <section class="benefits">
+    <div class="benefit">
+      <div class="emojibox">🔥</div>
+      <div class="benefit-text">
+        <h4>Descontos Insanos</h4>
+        <p>Produtos com até 70% OFF</p>
+      </div>
+    </div>
+    <div class="benefit">
+      <div class="emojibox">🎟</div>
+      <div class="benefit-text">
+        <h4>Cupons Exclusivos</h4>
+        <p>Só para membros do grupo</p>
+      </div>
+    </div>
+    <div class="benefit">
+      <div class="emojibox">👀</div>
+      <div class="benefit-text">
+        <h4>Itens em Alta</h4>
+        <p>Os mais desejados do momento</p>
+      </div>
+    </div>
+    <div class="benefit">
+      <div class="emojibox">✅</div>
+      <div class="benefit-text">
+        <h4>Ofertas Verificadas</h4>
+        <p>Promoções reais e testadas</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="sticky-footer">
+    <div>⏳ Últimas vagas de hoje</div>
+    <button id="ctaFooter" class="sticky-btn">Entrar no grupo</button>
+  </div>
 
   <script>
     const WHATS_LINK="https://sndflw.com/i/promocaomaximage";
     const START_VACANCIES=24, MIN_VACANCIES=2;
+    const feedEl=document.getElementById('feed');
     const vacancyText=document.getElementById('vacancyText');
     const fillBar=document.getElementById('fillBar');
-    let currentVacancies = parseInt(localStorage.getItem("currentVacancies")) || START_VACANCIES;
 
+    const NAMES_POOL=[
+      "Francisca Lacerda","Rosália Maria","Maria Júlia Souza","Ana Beatriz Nogueira","Josefa Almeida",
+      "Tereza Lemos","Joana Prado","Helena Barbosa","Cecília Andrade","Laura Pacheco","Clara Moreira",
+      "Isabel Figueira","Marta Azevedo","Aurora Fernandes","Olívia Castro","Beatriz Siqueira",
+      "Lúcia Nunes","Ester Carvalho","Camila Duarte","Regina Campos","Noêmia Teixeira","Paula Rezende",
+      "Marina Peixoto","Cristina Moura","Vitória Lopes","Sueli Brito","Rita Xavier","Elisa Cardoso",
+      "Lorena Ribeiro","Graça Monteiro","Helena Antunes","Patrícia Rocha","Juliana Costa","Madalena Correia",
+      "Adélia Vieira","Celina Pinto","Renata Tavares","Gabriela Melo","Sônia Gonçalves","Daniela Farias"
+    ];
+
+    function shuffle(arr){
+      for(let i=arr.length-1;i>0;i--){
+        const j=Math.floor(Math.random()* (i+1));
+        [arr[i],arr[j]]=[arr[j],arr[i]];
+      }
+      return arr;
+    }
+    let namesQueue=shuffle([...NAMES_POOL]);
+
+    let currentVacancies = parseInt(localStorage.getItem("currentVacancies")) || START_VACANCIES;
+    function normalizeDateStr(d){return new Date(d.getFullYear(), d.getMonth(), d.getDate()).toDateString();}
+    const todayStr = normalizeDateStr(new Date());
+    const lastResetDate = localStorage.getItem("lastResetDate");
+    if (lastResetDate !== todayStr) { resetVacancies(); }
+    scheduleMidnightReset();
+
+    function resetVacancies(){
+      currentVacancies = START_VACANCIES;
+      localStorage.setItem("currentVacancies", currentVacancies);
+      localStorage.setItem("lastResetDate", normalizeDateStr(new Date()));
+      updateVacancyUI();
+    }
+    function scheduleMidnightReset(){
+      const now = new Date();
+      const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+      const msToMidnight = nextMidnight.getTime() - now.getTime();
+      setTimeout(() => {
+        resetVacancies();
+        setInterval(resetVacancies, 24*60*60*1000);
+      }, msToMidnight);
+    }
     function updateVacancyUI(){
       vacancyText.textContent=`Últimas vagas de hoje • Restam ${currentVacancies} 👇`;
       const filled=(START_VACANCIES-currentVacancies)/(START_VACANCIES-MIN_VACANCIES);
-      fillBar.style.inset=`0 ${(1-Math.max(0,Math.min(1,filled)))*100}% 0 0`;
+      const pct=Math.max(0,Math.min(1,filled));
+      fillBar.style.inset=`0 ${(1-pct)*100}% 0 0`;
     }
-    function handleClick(){try{fbq('track','Lead');}catch(e){}setTimeout(()=>{window.open(WHATS_LINK,'_blank');},500);}
+    function step(){
+      if(currentVacancies<=MIN_VACANCIES) return;
+      if(namesQueue.length===0) namesQueue=shuffle([...NAMES_POOL]);
+      const name=namesQueue.shift();
+      pushNotification(name);
+      currentVacancies--;
+      localStorage.setItem("currentVacancies", currentVacancies);
+      updateVacancyUI();
+      if(currentVacancies>MIN_VACANCIES){
+        const nextMs=[1000,2000,3000][Math.floor(Math.random()*3)];
+        setTimeout(step,nextMs);
+      }
+    }
+    function pushNotification(name){
+      const row=document.createElement('div');
+      row.className='notif';
+      row.innerHTML=`<div class="badge">✅</div><div><strong>${name}</strong> entrou no grupo</div>`;
+      if(feedEl.firstChild){ feedEl.insertBefore(row,feedEl.firstChild); }
+      else{ feedEl.appendChild(row); }
+      if(feedEl.children.length>3){ feedEl.removeChild(feedEl.lastChild); }
+    }
+
+    function handleClick(){
+      try{ fbq('track','Lead'); }catch(e){}
+      setTimeout(()=>{ window.location.href = WHATS_LINK; },300);
+    }
+
     document.getElementById('ctaMain').addEventListener('click',handleClick);
-    window.addEventListener('load',updateVacancyUI);
+    document.getElementById('ctaFooter').addEventListener('click',handleClick);
+
+    window.addEventListener('load',()=>{
+      updateVacancyUI();
+      if(currentVacancies>MIN_VACANCIES){ setTimeout(step,1000); }
+    });
   </script>
 </body>
 </html>
