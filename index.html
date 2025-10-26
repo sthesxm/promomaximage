@@ -17,10 +17,7 @@
   'https://connect.facebook.net/en_US/fbevents.js');
 
   fbq('init', '3294037404094620');
-
-  // 🚫 Bloqueia eventos automáticos (como Subscribe)
   fbq('set', 'autoConfig', false, '3294037404094620');
-
   fbq('track', 'PageView');
   </script>
   <!-- End Meta Pixel -->
@@ -55,201 +52,105 @@
       box-shadow:var(--shadow);
     }
     .logo-wrap{
-      width:120px;
-      height:120px;
-      margin:0 auto 12px;
-      border-radius:50%;
-      background:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 8px 20px rgba(0,0,0,.2);
-      overflow:hidden;
+      width:120px;height:120px;margin:0 auto 12px;border-radius:50%;
+      background:#fff;display:flex;align-items:center;justify-content:center;
+      box-shadow:0 8px 20px rgba(0,0,0,.2);overflow:hidden;
     }
-    .logo-wrap img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center;
-      border-radius:50%;
-    }
+    .logo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:50%;}
     h1{font-size:28px;font-weight:800;margin-bottom:6px;}
-    .subtitle{
-      font-size:15px;
-      color:var(--text-main);
-      margin-bottom:10px;
+    .subtitle{font-size:15px;color:var(--text-main);margin-bottom:10px;}
+
+    .vacancy-wrap{max-width:600px;margin:6px auto 12px;text-align:center;}
+    .vacancy-top{font-weight:800;font-size:17px;margin-bottom:6px;}
+    .bar{width:100%;height:16px;background:#f1f1f1;border:2px solid #ddd;border-radius:999px;position:relative;overflow:hidden;}
+    .bar>.fill{position:absolute;inset:0 100% 0 0;background:var(--amber);border-radius:999px;transition:inset .5s ease;}
+
+    .cta-section{text-align:center;margin:10px auto 0;padding:15px;max-width:700px;}
+
+    /* 🟢 Prova social (acima do botão) */
+    .micro-trust{
+      display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#666;
+      background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.06);
+      border-radius:999px;padding:6px 10px;margin:10px 0 12px;white-space:nowrap;
+    }
+    .live-dot{
+      width:8px;height:8px;border-radius:50%;background:#28a745;
+      box-shadow:0 0 0 0 rgba(40,167,69,.6);animation:livePulse 1.8s ease-in-out infinite;display:inline-block;
+    }
+    @keyframes livePulse{
+      0%{box-shadow:0 0 0 0 rgba(40,167,69,.55);}
+      70%{box-shadow:0 0 0 8px rgba(40,167,69,0);}
+      100%{box-shadow:0 0 0 0 rgba(40,167,69,0);}
     }
 
-    .vacancy-wrap{
-      max-width:600px;
-      margin:6px auto 12px;
-      text-align:center;
-    }
-    .vacancy-top{
-      font-weight:800;
-      font-size:17px;
-      margin-bottom:6px;
-    }
-    .bar{
-      width:100%;height:16px;background:#f1f1f1;
-      border:2px solid #ddd;border-radius:999px;
+    /* ✨ Botão principal com shine (gradiente mantido) */
+    .cta-btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:16px 32px;width:100%;border-radius:999px;font-weight:800;font-size:18px;
+      background:linear-gradient(180deg,#ff7f7f,#9d2e31); /* inalterado */
+      color:var(--text-main);border:none;cursor:pointer;
+      animation:pulse 1.6s ease-in-out infinite;box-shadow:0 10px 25px rgba(255,145,145,.35);
       position:relative;overflow:hidden;
     }
-    .bar>.fill{
-      position:absolute;inset:0 100% 0 0;
-      background:var(--amber);
-      border-radius:999px;
-      transition:inset .5s ease;
+    @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+    .cta-btn::after{
+      content:"";position:absolute;top:0;bottom:0;left:-25%;width:22%;
+      background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.45) 50%,transparent 100%);
+      transform:skewX(-20deg);animation:shine 3.5s ease-in-out infinite;
     }
+    @keyframes shine{0%,60%{left:-25%;}70%{left:110%;}100%{left:110%;}}
 
-    .cta-section{
-      text-align:center;
-      margin:10px auto 0;
-      padding:15px;
-      max-width:700px;
-    }
-    .cta-btn{
-      display:inline-block;padding:16px 32px;
-      width:100%;
-      border-radius:999px;font-weight:800;font-size:18px;
-      /* 🔸 APENAS isto foi alterado: gradiente do botão principal */
-      background:linear-gradient(180deg,#ff7f7f,#9d2e31);
-      color:var(--text-main);
-      border:none;cursor:pointer;
-      animation:pulse 1.6s ease-in-out infinite;
-      box-shadow:0 10px 25px rgba(255,145,145,.35);
-      /* ===== ADIÇÕES PARA O SHINE (não alteram o gradiente) ===== */
-      position: relative;
-      overflow: hidden; /* garante o recorte do brilho */
-    }
-    @keyframes pulse{
-      0%,100%{transform:scale(1);}
-      50%{transform:scale(1.06);}
-    }
+    /* ➤ Setinhas modernas */
+    .cta-icon{width:26px;height:26px;flex:0 0 26px;display:inline-flex;align-items:center;justify-content:center;filter:drop-shadow(0 0 6px rgba(255,255,255,.35));}
+    .cta-icon svg{width:100%;height:100%;}
+    .cta-icon path{stroke:#fff;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round;fill:none;}
+    .cta-icon.left{animation:arrowInLeft 1.5s ease-in-out infinite;}
+    .cta-icon.right{animation:arrowInRight 1.5s ease-in-out infinite;}
+    @keyframes arrowInLeft{0%,60%,100%{transform:translateX(0);opacity:1;}70%{transform:translateX(4px);opacity:.95;}}
+    @keyframes arrowInRight{0%,60%,100%{transform:translateX(0);opacity:1;}70%{transform:translateX(-4px);opacity:.95;}}
 
-    .feed{
-      margin:18px auto 12px;
-      max-width:500px;
-      background:#f0f0f0;
-      border:1px solid #ccc;
-      border-radius:16px;
-      padding:12px;
-    }
+    /* 🔸 Texto do botão principal em branco (sem afetar setinhas) */
+    #ctaMain span:not(.cta-icon){color:#fff;}
+
+    /* 🔒 Linha de confiança (abaixo do botão) */
+    .trust-line{font-size:12px;color:#777;margin-top:8px;font-weight:600;text-align:center;}
+
+    .feed{margin:18px auto 12px;max-width:500px;background:#f0f0f0;border:1px solid #ccc;border-radius:16px;padding:12px;}
     .notif{
-      display:flex;align-items:center;gap:10px;
-      background:#fff;padding:10px;border-radius:12px;
-      margin-bottom:10px;border:1px solid #eee;
-      font-size:14px;font-weight:600;
-      opacity:0;transform:translateY(-20px);
-      animation:slideDown .4s ease forwards;
+      display:flex;align-items:center;gap:10px;background:#fff;padding:10px;border-radius:12px;
+      margin-bottom:10px;border:1px solid #eee;font-size:14px;font-weight:600;
+      opacity:0;transform:translateY(-20px);animation:slideDown .4s ease forwards;
     }
     .notif .badge{
-      background:rgba(46,204,113,.15);
-      border:1px solid rgba(46,204,113,.3);
-      color:#1e8e3e;font-weight:800;font-size:13px;
-      padding:6px 8px;border-radius:999px;
+      background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.3);
+      color:#1e8e3e;font-weight:800;font-size:13px;padding:6px 8px;border-radius:999px;
     }
-    @keyframes slideDown{
-      to{opacity:1;transform:translateY(0);}
-    }
+    @keyframes slideDown{to{opacity:1;transform:translateY(0);}}
 
     .benefits{max-width:700px;margin:8px auto;padding:0 15px;}
     .benefit{
-      display:flex;align-items:center;gap:14px;
-      background:rgba(255,201,201,0.2);
-      border-radius:16px;
-      padding:14px 16px;margin-bottom:14px;
-      border:1px solid var(--pink-dark);
-      box-shadow:0 4px 10px rgba(0,0,0,0.05);
-      color:var(--text-main);
+      display:flex;align-items:center;gap:14px;background:rgba(255,201,201,0.2);
+      border-radius:16px;padding:14px 16px;margin-bottom:14px;border:1px solid var(--pink-dark);
+      box-shadow:0 4px 10px rgba(0,0,0,0.05);color:var(--text-main);
     }
     .emojibox{
-      width:46px;height:46px;min-width:46px;
-      display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(180deg,var(--pink),var(--pink-dark));
-      border-radius:12px;
-      font-size:22px;
+      width:46px;height:46px;min-width:46px;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(180deg,var(--pink),var(--pink-dark));border-radius:12px;font-size:22px;
     }
-    .benefit-text h4{
-      font-size:17px;font-weight:800;margin-bottom:2px;
-    }
-    .benefit-text p{
-      font-size:14px;color:var(--text-main);margin:0;
-    }
+    .benefit-text h4{font-size:17px;font-weight:800;margin-bottom:2px;}
+    .benefit-text p{font-size:14px;color:var(--text-main);margin:0;}
 
     .sticky-footer{
-      position:fixed;bottom:0;left:0;right:0;
-      background:var(--footer-bg);
-      color:var(--white);
-      padding:12px 16px;
-      box-shadow:0 -8px 20px rgba(0,0,0,.2);
-      display:flex;align-items:center;justify-content:space-between;
-      z-index:50;
+      position:fixed;bottom:0;left:0;right:0;background:var(--footer-bg);color:var(--white);
+      padding:12px 16px;box-shadow:0 -8px 20px rgba(0,0,0,.2);
+      display:flex;align-items:center;justify-content:space-between;z-index:50;
     }
     .sticky-footer div{font-weight:700;}
     .sticky-btn{
       background:linear-gradient(180deg,var(--pink),var(--pink-dark));
-      color:var(--text-main);border:none;border-radius:999px;
-      padding:14px 26px;
-      font-weight:800;font-size:15px;
-      cursor:pointer;
-      box-shadow:0 6px 16px rgba(255,145,145,.35);
-      margin-left:10px;
+      color:var(--text-main);border:none;border-radius:999px;padding:14px 26px;
+      font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 6px 16px rgba(255,145,145,.35);margin-left:10px;
     }
-
-    /* ===================== CSS ADICIONAL REQUERIDO ===================== */
-
-    /* Prova social (acima do botão) */
-    .micro-trust{
-      font-size:13.5px;
-      font-weight:700;
-      color:#666;
-      margin:10px 0;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:6px;
-    }
-    .live-dot{
-      width:8px; height:8px; border-radius:50%;
-      background:#1fbf75;
-      box-shadow:0 0 0 0 rgba(31,191,117,.55);
-      animation:dotPulse 1.8s ease-out infinite;
-    }
-    @keyframes dotPulse{
-      0%   { box-shadow:0 0 0 0 rgba(31,191,117,.55); }
-      70%  { box-shadow:0 0 0 10px rgba(31,191,117,0); }
-      100% { box-shadow:0 0 0 0 rgba(31,191,117,0); }
-    }
-
-    /* Flash/shine que passa no botão principal (apenas adicionar) */
-    .cta-btn::after{
-      content:"";
-      position:absolute; top:0; bottom:0; left:-25%;
-      width:22%;
-      background:linear-gradient(120deg,transparent 0%, rgba(255,255,255,.45) 50%, transparent 100%);
-      transform:skewX(-20deg);
-      animation:shine 3.5s ease-in-out infinite;
-      pointer-events:none;
-    }
-    @keyframes shine{
-      0%,60% { left:-25%; }
-      70%    { left:110%; }
-      100%   { left:110%; }
-    }
-
-    /* Linha de confiança (abaixo do botão) */
-    .trust-line{
-      font-size:12px;
-      color:#777;
-      margin-top:8px;
-      font-weight:600;
-      text-align:center;
-    }
-    /* =================== FIM DO CSS ADICIONAL REQUERIDO =================== */
   </style>
 </head>
 <body>
@@ -267,16 +168,28 @@
       <div class="bar"><div class="fill" id="fillBar"></div></div>
     </div>
 
-    <!-- Prova social condensada (acima do botão) -->
+    <!-- 🟢 Prova Social -->
     <div class="micro-trust">
       <span class="live-dot"></span> +7.500 membros · 🎯 1 clique · 🚫 Sem spam
     </div>
 
-    <!-- 🔸 APENAS isto foi alterado: texto do botão principal -->
-    <button id="ctaMain" class="cta-btn">ENTRAR GRÁTIS NO GRUPO</button>
+    <!-- ✨ Botão principal com setinhas e texto branco -->
+    <button id="ctaMain" class="cta-btn">
+      <span class="cta-icon left" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false"><path d="M8 4 L16 12 L8 20" /></svg>
+      </span>
 
-    <!-- Linha de confiança (abaixo do botão) -->
-    <p class="trust-line">🔒 100% seguro · Link oficial do grupo · Nenhum dado é solicitado</p>
+      <span>ENTRAR GRÁTIS NO GRUPO</span>
+
+      <span class="cta-icon right" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false"><path d="M16 4 L8 12 L16 20" /></svg>
+      </span>
+    </button>
+
+    <!-- 🔒 Linha de confiança -->
+    <p class="trust-line">
+      🔒 100% seguro · Link oficial do grupo · Nenhum dado é solicitado
+    </p>
 
     <div class="feed" id="feed"></div>
   </section>
@@ -334,7 +247,13 @@
       "Adélia Vieira","Celina Pinto","Renata Tavares","Gabriela Melo","Sônia Gonçalves","Daniela Farias"
     ];
 
-    function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j]];}return arr;}
+    function shuffle(arr){
+      for(let i=arr.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [arr[i],arr[j]]=[arr[j],arr[i]];
+      }
+      return arr;
+    }
     let namesQueue=shuffle([...NAMES_POOL]);
 
     let currentVacancies = parseInt(localStorage.getItem("currentVacancies")) || START_VACANCIES;
